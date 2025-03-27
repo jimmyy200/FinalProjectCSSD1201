@@ -29,7 +29,7 @@ public class PixelCraft {
             // The class named 'converterName' must be a subclass of 'Converter'
             // Call the convert method
             converter.convert(inputFileName, outputFileName);
-       } catch  (IOException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException | ClassNotFoundException e) {
+       } catch  (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException | ClassNotFoundException e) {
 
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace(); // Uncomment this line for debugging. Comment for production.
