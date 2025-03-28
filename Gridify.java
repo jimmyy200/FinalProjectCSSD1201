@@ -18,7 +18,7 @@ public class Gridify extends Converter{
             ImageIO.write(newImage, "PNG", outputFile);
             
         } catch (IOException e){
-            System.out.println("MaxRed IOException");
+            System.out.println("Gridify IOException");
         }
     }
 
