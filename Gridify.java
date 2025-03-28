@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 
-public class Grayscale extends Converter{
+public class Gridify extends Converter{
     public void convert(String inputN, String outN){
         File inputFile = new File(inputN);
         try{
@@ -13,27 +13,36 @@ public class Grayscale extends Converter{
             int width = originalImage.getWidth();
             int height = originalImage.getHeight();
             BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-            gray(originalImage, width, height, newImage);
+            gridify(originalImage, width, height, newImage);
             File outputFile = new File(outN);
             ImageIO.write(newImage, "PNG", outputFile);
             
         } catch (IOException e){
-            System.out.println("Grayscale IOException");
+            System.out.println("MaxRed IOException");
         }
     }
 
-    public void gray(BufferedImage img, int w, int h, BufferedImage newI){
+
+    public void gridify(BufferedImage img, int w, int h, BufferedImage newI){
         for (int i = 0; i < w; i++){
             for (int j = 0; j < h; j++){
                 int rgbNum = img.getRGB(i, j);
                 int red = redFromRGB(rgbNum);
                 int green = greenFromRGB(rgbNum);
                 int blue = blueFromRGB(rgbNum);
-                int avg = (int)((red*0.299) + (green*0.587) + (blue*0.114));
-                int finRGB = (avg << 16) | (avg << 8) | (avg << 0);
+                int finRGB = (red << 16) | (green << 8) | (blue << 0);
                 newI.setRGB(i,j, finRGB);
+                if (i == w/3 || i == 2*w/3){
+                    for (int x = 0; x < h; x++){
+                        newI.setRGB(i,x,0);
+                    }
+                } 
+                if (j == h/3 || j == 2*h/3){
+                    for (int z = 0; z < w; z++){
+                        newI.setRGB(z,j,0);
+                    }
+                } 
             }
         }
     }
-
 }

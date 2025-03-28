@@ -27,7 +27,7 @@ public class MaxRed extends Converter{
         for (int i = 0; i < w; i++){
             for (int j = 0; j < h; j++){
                 int rgbNum = img.getRGB(i, j);
-                int green = redFromRGB(rgbNum);
+                int green = greenFromRGB(rgbNum);
                 int blue = blueFromRGB(rgbNum);
                 int finRGB = (255 << 16) | (green << 8) | (blue << 0);
                 newI.setRGB(i,j, finRGB);
