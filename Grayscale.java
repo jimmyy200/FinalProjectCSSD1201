@@ -32,21 +32,8 @@ public class Grayscale extends Converter{
                 int avg = (int)((red*0.299) + (green*0.587) + (blue*0.114));
                 int finRGB = (avg << 16) | (avg << 8) | (avg << 0);
                 newI.setRGB(i,j, finRGB);
-                System.out.println(avg);
             }
         }
-    }
-
-    public int redFromRGB(int rgbN){
-        return (rgbN >> 16) & 0xff;
-    }
-
-    public int greenFromRGB(int rgbN){
-        return (rgbN >> 8) & 0xff;
-    }
-
-    public int blueFromRGB(int rgbN){
-        return (rgbN >> 0) & 0xff;
     }
 
 }
