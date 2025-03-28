@@ -18,7 +18,7 @@ public class MaxRed extends Converter{
             ImageIO.write(newImage, "PNG", outputFile);
             
         } catch (IOException e){
-            System.out.println("Blur IOException");
+            System.out.println("MaxRed IOException");
         }
     }
 
