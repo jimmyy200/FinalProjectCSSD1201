@@ -1,3 +1,3 @@
-public interface Converter {
-    public void convert(String inputFileName, String outputFileName);
+public abstract class Converter {
+    public abstract void convert(String inputFileName, String outputFileName);
 }
