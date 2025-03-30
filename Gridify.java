@@ -6,6 +6,9 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 
 public class Gridify extends Converter{
+    // convert method 
+    // Main job is to read and write files
+    // Also calls the method to change the RGB of the original image
     public void convert(String inputN, String outN){
         File inputFile = new File(inputN);
         try{
@@ -22,7 +25,8 @@ public class Gridify extends Converter{
         }
     }
 
-
+    // gridify method
+    // nested for loop to draw lines on the thirds of the image
     public void gridify(BufferedImage img, int w, int h, BufferedImage newI){
         for (int i = 0; i < w; i++){
             for (int j = 0; j < h; j++){

@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class Rotate extends Converter {
+    // convert method 
+    // Main job is to read and write files
+    // Also calls the method to change the RGB of the original image
     public void convert(String input, String output){
         BufferedImage img = null;
         try {
@@ -19,6 +22,9 @@ public class Rotate extends Converter {
             System.out.println("Rotate IOException");
         }
     }
+
+    // rotate method
+    // Nested for loop to change the original height to final image width and original width to final image height
     public void rotate(BufferedImage img, int width, int height, BufferedImage newImg){
         int rgb = 0;
         int red = 0;
