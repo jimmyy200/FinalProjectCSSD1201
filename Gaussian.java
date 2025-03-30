@@ -6,6 +6,9 @@ import java.io.File;
 import java.util.Random;
 
 public class Gaussian extends Converter {
+    // convert method 
+    // Main job is to read and write files
+    // Also calls the method to change the RGB of the original image
     public void convert(String input, String output){
         BufferedImage img = null;
         try {
@@ -26,16 +29,16 @@ public class Gaussian extends Converter {
         int green = 0;
         int blue = 0;
         int finalRGB = 0;
-        Random rand = new Random();
+        Random rand = new Random(); 
         for (int x = 0; x < width; x++){
             for (int y = 0; y < height; y++){
                 rgb = img.getRGB(x, y);
                 red = redFromRGB(rgb);
                 green = greenFromRGB(rgb);
                 blue = blueFromRGB(rgb);
-                int randomNum = rand.nextInt(3);
+                int randomNum = rand.nextInt(3); // generates a random value in order to determine whether or not gaussian noise will be generated on the pixel
                 if (randomNum == 2){ // will create gaussian noise
-                    finalRGB = (rand.nextInt(255) << 16 | rand.nextInt(255) << 8 | rand.nextInt(255) << 0);
+                    finalRGB = (rand.nextInt(255) << 16 | rand.nextInt(255) << 8 | rand.nextInt(255) << 0); // a random colour value
                 }
                 else {
                     finalRGB = (red << 16 | green << 8 | blue << 0);
@@ -43,17 +46,5 @@ public class Gaussian extends Converter {
                 newImg.setRGB(x, y, finalRGB);
             }
         }
-        // int x = 0;
-        // x += rand.nextInt(6);
-        // int y = 0;
-        // y += rand.nextInt(6);
-        // while (x < width){
-        //     while (y < height){
-        //         int finalRGB = (rand.nextInt(255) >> 16 | rand.nextInt(255) >> 8 | rand.nextInt(255) >> 0);
-        //         newImg.setRGB(x, y, finalRGB);
-        //         y += rand.nextInt(1, 6);
-        //     }
-        //     x += rand.nextInt(1, 6);
-        // }
     }
 }
