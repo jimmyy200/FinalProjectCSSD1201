@@ -6,6 +6,9 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 
 public class MaxRed extends Converter{
+    // convert method 
+    // Main job is to read and write files
+    // Also calls the method to change the RGB of the original image
     public void convert(String inputN, String outN){
         File inputFile = new File(inputN);
         try{
@@ -22,11 +25,14 @@ public class MaxRed extends Converter{
         }
     }
 
-
+    // redify method
+    // calls the outerloop method
     public void redify(BufferedImage img, int w, int h, BufferedImage newI){
         outerL(w,h,0,img,newI);
     }
 
+    // outerloop method
+    // calls the innerloop method
     private void outerL(int w, int h, int i, BufferedImage img, BufferedImage newI){
         if (i >= w){
             return;
@@ -35,6 +41,8 @@ public class MaxRed extends Converter{
         outerL(w, h, i+1, img, newI);
     }
 
+    // innerloop
+    // sets the red to 255 but keeps everything else the same
     private void innerL(int h, int i, int j, BufferedImage img, BufferedImage newI){
         if (j >= h){
             return;

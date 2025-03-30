@@ -6,6 +6,9 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 
 public class Grayscale extends Converter{
+    // convert method 
+    // Main job is to read and write files
+    // Also calls the method to change the RGB of the original image
     public void convert(String inputN, String outN){
         File inputFile = new File(inputN);
         try{
@@ -22,10 +25,12 @@ public class Grayscale extends Converter{
         }
     }
 
+    // calls the outerloop method
     public void gray(BufferedImage img, int w, int h, BufferedImage newI){
         outerL(w,h,0,img,newI);
     }
 
+    // replaces the outer loop of a for loop
     private void outerL(int w, int h, int i, BufferedImage original, BufferedImage newI){
         if (i >= w){
             return;
@@ -34,6 +39,8 @@ public class Grayscale extends Converter{
         outerL(w, h, i+1, original, newI);
     }
 
+    // replaces the inner loop of a for loop
+    // uses the grayscale formula to set the RGB of the image
     private void innerL(int h, int i, int j, BufferedImage original, BufferedImage newI){
         if (j >= h){
             return;

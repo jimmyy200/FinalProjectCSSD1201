@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class Flip extends Converter {
+    // convert method 
+    // Main job is to read and write files
+    // Also calls the method to change the RGB of the original image
     public void convert(String input, String output){
         BufferedImage img = null;
         try {
@@ -19,12 +22,16 @@ public class Flip extends Converter {
             System.out.println("Flip IOException");
         }
     }
+    // flip method
+    // Iterates through the width to call the flipIteration method
     public void flip(BufferedImage img, int width, int height, BufferedImage newImg){
         for (int x = width; x >= 0; x--){
             flipIteration(img, x, height, newImg);
         }
         
     }
+    // flipIteration method
+    // Calculates the difference to put the pixel to the other side of the image
     public void flipIteration(BufferedImage img, int width, int height, BufferedImage newImg){
         int widthDiff = 0;
         int heightDiff = 0;
